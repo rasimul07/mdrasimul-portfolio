@@ -8,7 +8,7 @@ const sections = [
   "About",
   "Experience",
   "Projects",
-  "Skils",
+  "Skills",
   "Blogs",
   "Contact",
 ];
@@ -25,13 +25,21 @@ const Navbar = ({ isTop }: { isTop: boolean }) => {
         transition={{ duration: 0.3, ease: "easeInOut" }}
       >
         <div className="col-span-4 h-full flex items-center pl-10">
-          <Image src="/logo.png" alt="Logo" height={120} width={120} />
+          <Image
+            src="/logo.png"
+            alt="Logo"
+            height={120}
+            width={120}
+            className={isTop ? "invert" : ""}
+          />
         </div>
         <div className="col-span-8 h-full flex items-center w-full">
           <ul className="flex justify-evenly w-full">
             {sections.map((section, index) => (
               <motion.div
-                className="relative inline-block cursor-pointer text-black"
+                className={`relative inline-block cursor-pointer ${
+                  isTop ? "text-white" : "text-black"
+                } `}
                 whileHover="hover"
                 initial="rest"
                 animate="rest"
