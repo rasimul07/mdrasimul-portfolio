@@ -17,10 +17,10 @@ const Home: React.FC = () => {
     }
   });
   return (
-    <div className="h-screen bg-black flex flex-col relative">
+    <div className="h-screen bg-black flex flex-col relative w-screen overflow-x-hidden">
       <Navbar isTop={isTop} />
 
-      <div style={{ width: "100%", height: "100vh", position: "absolute" }}>
+      <div style={{ width: "100%", maxWidth:'100vw', height: "100vh", position: "absolute" }}>
         <Particles
           particleColors={["#ffffff", "#ffffff"]}
           particleCount={200}
@@ -32,13 +32,13 @@ const Home: React.FC = () => {
           disableRotation={false}
         />
       </div>
-      <div className="flex justify-between h-full">
-        <div className="w-5/12 p-4 h-full flex justify-center items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 h-full">
+        <div className="col-span-1 p-4 h-full flex justify-center items-center">
           <div className="">
             <h2 className="text-4xl font-mono tracking-wide text-[#FFFBCA] font-bold text-center">
               Md Rasimul Islam
             </h2>
-            <p className="text-gray-500 text-center max-w-[30vw]">
+            <p className="text-gray-500 text-center">
               Highly passionate to my work, open mind and eager to learn new
               things.
             </p>
@@ -65,7 +65,7 @@ const Home: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="w-7/12 h-full flex justify-center items-center">
+        <div className="col-span-1 h-full flex justify-center items-center">
           <div className="flex space-x-2 justify-center items-center">
             <p className="text-xl font-bold text-secondary">Creative</p>
             <RotatingText

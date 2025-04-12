@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { Menu } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
@@ -33,7 +34,14 @@ const Navbar = ({ isTop }: { isTop: boolean }) => {
             className={isTop ? "invert" : ""}
           />
         </div>
-        <div className="col-span-8 h-full flex items-center w-full">
+        <div className="col-span-8 md:hidden flex items-center justify-end pr-6">
+          <Menu
+            color={isTop ? "white" : "black"}
+            size={30}
+            className="h-full"
+          />
+        </div>
+        <div className="col-span-8 h-full items-center w-full hidden md:flex">
           <ul className="flex justify-evenly w-full">
             {sections.map((section, index) => (
               <motion.div
