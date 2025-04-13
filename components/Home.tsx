@@ -4,6 +4,7 @@ import Particles from "./custom-ui/Particles";
 import RotatingText from "./custom-ui/Rotating";
 import ShinyText from "./custom-ui/ShinyText";
 import Navbar from "./Navbar";
+import Magnet from "./custom-ui/Magnet";
 
 const Home: React.FC = () => {
   const { scrollYProgress } = useScroll();
@@ -20,7 +21,14 @@ const Home: React.FC = () => {
     <div className="h-screen bg-black flex flex-col relative w-screen overflow-x-hidden">
       <Navbar isTop={isTop} />
 
-      <div style={{ width: "100%", maxWidth:'100vw', height: "100vh", position: "absolute" }}>
+      <div
+        style={{
+          width: "100%",
+          maxWidth: "100vw",
+          height: "100vh",
+          position: "absolute",
+        }}
+      >
         <Particles
           particleColors={["#ffffff", "#ffffff"]}
           particleCount={200}
@@ -35,8 +43,8 @@ const Home: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 h-full">
         <div className="col-span-1 p-4 h-full flex justify-center items-center">
           <div className="">
-            <h2 className="text-4xl font-mono tracking-wide text-[#FFFBCA] font-bold text-center">
-              Md Rasimul Islam
+            <h2 className="text-3xl md:text-5xl font-mono tracking-wide text-[#FFFBCA] font-bold text-center capitalize">
+              MD RASIMUL ISLAM
             </h2>
             <p className="text-gray-500 text-center">
               Highly passionate to my work, open mind and eager to learn new
@@ -52,16 +60,17 @@ const Home: React.FC = () => {
                   text="Resume"
                   disabled={false}
                   speed={3}
-                  className="border border-white rounded-full px-2 font-semibold"
+                  className="border border-white rounded-full text-lg px-2 font-semibold"
                 />
               </a>
-
-              <ShinyText
-                text="Hire me!"
-                disabled={false}
-                speed={3}
-                className="border border-white rounded-full px-2 font-semibold"
-              />
+              <Magnet padding={70} disabled={false} magnetStrength={2}>
+                <ShinyText
+                  text="Hire me!"
+                  disabled={false}
+                  speed={3}
+                  className="border border-white rounded-full text-lg px-2 font-semibold"
+                />
+              </Magnet>
             </div>
           </div>
         </div>
