@@ -17,7 +17,7 @@ const Navbar = ({ isTop }: { isTop: boolean }) => {
   return (
     <nav className="fixed top-0 h-[70px] w-full z-50">
       <motion.div
-        className="grid grid-cols-12 h-full w-full"
+        className="flex justify-between md:grid md:grid-cols-12 h-full w-full"
         animate={{
           backgroundColor: isTop
             ? "rgba(255,255,255,0)"
@@ -25,23 +25,23 @@ const Navbar = ({ isTop }: { isTop: boolean }) => {
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
       >
-        <div className="col-span-4 h-full flex items-center pl-10">
+        <div className="md:col-span-4 h-full flex items-center md:ml-10 ml-4">
           <Image
             src="/logo.png"
             alt="Logo"
-            height={120}
+            height={100}
             width={120}
-            className={isTop ? "invert" : ""}
+            className={` ${isTop ? "invert" : ""}`}
           />
         </div>
-        <div className="col-span-8 md:hidden flex items-center justify-end pr-6">
+        <div className="md:hidden flex items-center justify-end pr-6">
           <Menu
             color={isTop ? "white" : "black"}
-            size={30}
+            size={25}
             className="h-full"
           />
         </div>
-        <div className="col-span-8 h-full items-center w-full hidden md:flex">
+        <div className="md:col-span-8 h-full items-center w-full hidden md:flex">
           <ul className="flex justify-evenly w-full">
             {sections.map((section, index) => (
               <motion.div
