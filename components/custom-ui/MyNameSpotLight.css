@@ -1,0 +1,52 @@
+#myNameSpotLight {
+    background: #F4EAE0;
+}
+
+h1 {
+    font-family: 'Teko', sans-serif;
+    text-transform: uppercase;
+    font-size: 2rem;
+    text-align: center;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    margin: 0;
+    min-height: calc(5vh - 16px);
+    background: #000;
+    position: relative;
+    color: #797979
+}
+
+h1:before {
+    content: attr(data-text);
+    position: absolute;
+    background:#fff;
+    background-clip: text;
+    color: transparent;
+    background-size: 100% 90%;
+    line-height: 0.9;
+    clip-path: ellipse(120px 120px at -2.54% -9.25%);
+    animation: swing 5s infinite;
+    animation-direction: alternate;
+}
+
+@keyframes swing {
+    0% {
+        -webkit-clip-path: ellipse(120px 120px at -2.54% -9.25%);
+         clip-path: ellipse(120px 120px at -2.54% -9.25%)
+    }
+
+    50% {
+        -webkit-clip-path: ellipse(120px 120px at 49.66% 64.36%);
+        clip-path: ellipse(120px 120px at 49.66% 64.36%);
+
+    }
+
+    100% {
+        -webkit-clip-path: ellipse(120px 120px at 102.62% -1.61% );
+        clip-path: ellipse(120px 120px at 102.62% -1.61%);
+    }
+}
