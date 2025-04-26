@@ -2,9 +2,11 @@
 import { motion } from "framer-motion";
 import { Menu } from "lucide-react";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
+import SideMenu from "./SideMenu";
+import { UIStore } from "@/store/ui.store";
 
-const sections = [
+export const sections = [
   "Home",
   "About",
   "Experience",
@@ -14,6 +16,8 @@ const sections = [
   "Contact",
 ];
 const Navbar = ({ isTop }: { isTop: boolean }) => {
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const {activeSection} = UIStore();
   return (
     <nav className="fixed top-0 h-[70px] w-full z-50">
       <motion.div
@@ -39,6 +43,7 @@ const Navbar = ({ isTop }: { isTop: boolean }) => {
             color={isTop ? "white" : "black"}
             size={25}
             className="h-full"
+            onClick={() => setIsOpenMenu(true)}
           />
         </div>
         <div className="md:col-span-8 h-full items-center w-full hidden md:flex">
@@ -50,15 +55,16 @@ const Navbar = ({ isTop }: { isTop: boolean }) => {
                 } `}
                 whileHover="hover"
                 initial="rest"
-                animate="rest"
+                animate={activeSection === section ? "active" : "rest"}
                 key={index}
               >
                 <span>{section}</span>
                 <motion.div
-                  className="absolute left-0 bottom-0 h-[2px] bg-blue-600"
+                  className={`absolute left-0 -bottom-1 h-[2px] ${isTop? "bg-white":"bg-primary"} `}
                   variants={{
                     rest: { scaleX: 0 },
                     hover: { scaleX: 1 },
+                    active: { scaleX: 1 },
                   }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                   style={{ originX: 0, width: "100%" }}
@@ -67,6 +73,7 @@ const Navbar = ({ isTop }: { isTop: boolean }) => {
             ))}
           </ul>
         </div>
+        <SideMenu isOpenMenu={isOpenMenu} setIsOpenMenu={setIsOpenMenu} />
       </motion.div>
     </nav>
   );

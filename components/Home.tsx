@@ -5,6 +5,8 @@ import RotatingText from "./custom-ui/Rotating";
 import ShinyText from "./custom-ui/ShinyText";
 import Navbar from "./Navbar";
 import Magnet from "./custom-ui/Magnet";
+import PixelTransition from "./custom-ui/PixelTransition";
+import MyNameSpotLight from "./custom-ui/MyNameSpotLight";
 
 const Home: React.FC = () => {
   const { scrollYProgress } = useScroll();
@@ -40,15 +42,30 @@ const Home: React.FC = () => {
           disableRotation={false}
         />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 h-full">
-        <div className="col-span-1 p-4 h-full flex justify-center items-center">
-          <div className="">
-            <h2 className="text-3xl md:text-5xl font-mono tracking-wide text-[#FFFBCA] font-bold text-center capitalize">
-              MD RASIMUL ISLAM
-            </h2>
-            <p className="text-gray-500 text-center">
-              Highly passionate to my work, open mind and eager to learn new
-              things.
+      <div className="grid grid-rows-12 md:grid-cols-12 h-full">
+        <div className="row-span-4 md:col-span-5 p-4 flex justify-center items-end md:items-center md:h-screen">
+          <div className="space-y-2">
+            <div className="flex justify-center items-center capitalize w-full ">
+              <p className="text-xl md:text-3xl font-semibold text-secondary capitalize">
+                CREATIVE
+              </p>
+              <RotatingText
+                texts={["full stack developer", "content creator"]}
+                mainClassName="text-slate-400 whitespace-nowrap text-xl md:text-3xl font-semibold overflow-hidden justify-center rounded-lg itallic w-full"
+                staggerFrom={"random"}
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                splitBy="characters"
+                exit={{ y: "-120%" }}
+                staggerDuration={0.025}
+                splitLevelClassName="overflow-hidden"
+                transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                rotationInterval={2000}
+              />
+            </div>
+            <p className="text-gray-400 text-center a">
+              I am highly passionate about my work, open-minded, and eager to
+              learn new things. Honesty is in my blood.
             </p>
             <div className="space-x-4 flex justify-center items-center mt-5">
               <a
@@ -74,21 +91,44 @@ const Home: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-1 h-full flex justify-center items-center">
-          <div className="flex space-x-2 justify-center items-center">
-            <p className="text-xl font-bold text-secondary">Creative</p>
-            <RotatingText
-              texts={["Full stack developer", "Content crator"]}
-              mainClassName="px-2 sm:px-2 md:px-3 bg-secondary whitespace-nowrap text-xl font-bold text-black overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
-              staggerFrom={"last"}
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              exit={{ y: "-120%" }}
-              staggerDuration={0.025}
-              splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
-              transition={{ type: "spring", damping: 30, stiffness: 400 }}
-              rotationInterval={2000}
-            />
+        <div className="row-span-8 md:col-span-7 flex flex-col justify-center items-center space-y-4 md:h-screen">
+          <PixelTransition
+            firstContent={
+              <img
+                src="./profile.jpg"
+                alt="default pixel transition content, a cat!"
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
+            }
+            secondContent={
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  display: "grid",
+                  placeItems: "center",
+                  backgroundColor: "#111",
+                }}
+              >
+                <p
+                  style={{
+                    fontWeight: 800,
+                    fontSize: "3rem",
+                    color: "#ffffff",
+                  }}
+                  className="text-center leading-none"
+                >
+                  Welcome to my portfolio
+                </p>
+              </div>
+            }
+            gridSize={12}
+            pixelColor="#ffffff"
+            animationStepDuration={0.4}
+            className="custom-pixel-card"
+          />
+          <div className="">
+            <MyNameSpotLight />
           </div>
         </div>
       </div>
