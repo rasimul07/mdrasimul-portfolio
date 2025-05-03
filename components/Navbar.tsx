@@ -17,7 +17,14 @@ export const sections = [
 ];
 const Navbar = ({ isTop }: { isTop: boolean }) => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
-  const {activeSection} = UIStore();
+  const { activeSection } = UIStore();
+  const handleScrollToFeatures = (section:string) => {
+    const element = document.getElementById(section);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+ 
   return (
     <nav className="fixed top-0 h-[70px] w-full z-50">
       <motion.div
@@ -57,10 +64,15 @@ const Navbar = ({ isTop }: { isTop: boolean }) => {
                 initial="rest"
                 animate={activeSection === section ? "active" : "rest"}
                 key={index}
+                onClick={() => {
+                  handleScrollToFeatures(section)
+                }}
               >
                 <span>{section}</span>
                 <motion.div
-                  className={`absolute left-0 -bottom-1 h-[2px] ${isTop? "bg-white":"bg-primary"} `}
+                  className={`absolute left-0 -bottom-1 h-[2px] ${
+                    isTop ? "bg-white" : "bg-primary"
+                  } `}
                   variants={{
                     rest: { scaleX: 0 },
                     hover: { scaleX: 1 },

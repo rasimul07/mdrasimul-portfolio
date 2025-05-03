@@ -28,25 +28,25 @@ h1:before {
     color: transparent;
     background-size: 100% 90%;
     line-height: 0.9;
-    clip-path: ellipse(120px 120px at -2.54% -9.25%);
+    clip-path: ellipse(80px 80px at -2.54% -9.25%);
     animation: swing 5s infinite;
     animation-direction: alternate;
 }
 
 @keyframes swing {
     0% {
-        -webkit-clip-path: ellipse(120px 120px at -2.54% -9.25%);
-         clip-path: ellipse(120px 120px at -2.54% -9.25%)
+        -webkit-clip-path: ellipse(80px 80px at -2.54% -9.25%);
+         clip-path: ellipse(80px 80px at -2.54% -9.25%)
     }
 
     50% {
-        -webkit-clip-path: ellipse(120px 120px at 49.66% 64.36%);
-        clip-path: ellipse(120px 120px at 49.66% 64.36%);
+        -webkit-clip-path: ellipse(80px 80px at 49.66% 64.36%);
+        clip-path: ellipse(80px 80px at 49.66% 64.36%);
 
     }
 
     100% {
-        -webkit-clip-path: ellipse(120px 120px at 102.62% -1.61% );
-        clip-path: ellipse(120px 120px at 102.62% -1.61%);
+        -webkit-clip-path: ellipse(80px 80px at 102.62% -1.61% );
+        clip-path: ellipse(80px 80px at 102.62% -1.61%);
     }
 }

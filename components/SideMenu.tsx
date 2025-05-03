@@ -13,7 +13,12 @@ const SideMenu = ({
   setIsOpenMenu: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const menuRef = useRef<HTMLDivElement | null>(null);
-
+  const handleScrollTo = (section:string) => {
+    const element = document.getElementById(section);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   useEffect(() => {
     if (menuRef.current) {
       gsap.fromTo(
@@ -34,7 +39,7 @@ const SideMenu = ({
     isOpenMenu && (
       <div
         ref={menuRef}
-        className="fixed top-0 right-0 h-[40vh] w-[50vw] bg-white z-50 shadow-lg"
+        className="fixed top-0 right-0 h-[46vh] w-[50vw] bg-white z-50 shadow-lg"
       >
         <div className="flex justify-end items-center h-[10%] px-4">
           <X
@@ -46,7 +51,14 @@ const SideMenu = ({
         </div>
         <div className="flex flex-col justify-center items-center w-full gap-4">
           {sections.map((section, index) => (
-            <span className="text-xl" key={index}>
+            <span
+              className="text-xl"
+              key={index}
+              onClick={() => {
+                setIsOpenMenu(false);
+                handleScrollTo(section)
+              }}
+            >
               {section}
             </span>
           ))}
