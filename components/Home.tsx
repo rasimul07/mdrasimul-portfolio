@@ -22,7 +22,6 @@ const Home: React.FC = () => {
   return (
     <div className="h-screen bg-black flex flex-col relative w-screen overflow-x-hidden">
       <Navbar isTop={isTop} />
-
       <div
         style={{
           width: "100%",
@@ -72,22 +71,26 @@ const Home: React.FC = () => {
                 href="https://drive.google.com/file/d/1sfCBFkxHZAZr7xl1Ok5jDMPCllSou-u0/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="cursor-pointer z-2"
+              
               >
                 <ShinyText
                   text="Resume"
                   disabled={false}
                   speed={3}
-                  className="border border-white rounded-full text-lg px-2 font-semibold"
+                  className="border border-white rounded-full text-lg px-2 font-semibold z-1"
                 />
               </a>
-              <Magnet padding={70} disabled={false} magnetStrength={2}>
-                <ShinyText
-                  text="Hire me!"
-                  disabled={false}
-                  speed={3}
-                  className="border border-white rounded-full text-lg px-2 font-semibold"
-                />
-              </Magnet>
+              <div className="">  
+                <Magnet padding={30} disabled={false} magnetStrength={1}>
+                  <ShinyText
+                    text="Hire me!"
+                    disabled={false}
+                    speed={3}
+                    className="border border-white rounded-full text-lg px-2 font-semibold cursor-pointer"
+                  />
+                </Magnet>
+              </div>
             </div>
           </div>
         </div>
