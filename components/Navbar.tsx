@@ -8,11 +8,11 @@ import { UIStore } from "@/store/ui.store";
 
 export const sections = [
   "Home",
-  "About",
+  // "About",
   "Experience",
-  "Projects",
-  "Skills",
-  "Blogs",
+  // "Projects",
+  // "Skills",
+  // "Blogs",
   "Contact",
 ];
 const Navbar = ({ isTop }: { isTop: boolean }) => {

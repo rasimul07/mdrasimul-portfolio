@@ -23,7 +23,7 @@ const SideMenu = ({
     if (menuRef.current) {
       gsap.fromTo(
         menuRef.current,
-        { x: "100%" },
+        { x: "100%", duration: 0.5 },
         { x: "0%", duration: 0.5, ease: "power2.out" }
       );
     }
@@ -39,9 +39,9 @@ const SideMenu = ({
     isOpenMenu && (
       <div
         ref={menuRef}
-        className="fixed top-0 right-0 h-[46vh] w-[50vw] bg-white z-50 shadow-lg"
+        className="fixed top-0 right-0 w-[50vw] bg-white z-50 shadow-lg pb-3"
       >
-        <div className="flex justify-end items-center h-[10%] px-4">
+        <div className="flex justify-end items-center h-[10%] px-4 ">
           <X
             className="cursor-pointer"
             color="black"
