@@ -1,22 +1,3 @@
-// import React from "react";
-
-// const Experience = () => {
-//   return (
-//     <div>
-//       <div>
-//         <h1>Company name: First Penny pvt ltd</h1> <p> company logo</p>
-//         <p>company linked in profile</p>
-//         <p>company website</p>
-//         <p>my joining date</p>
-//         <p>role in this company</p>
-//         <p>skills i am using in the company</p>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Experience;
-
 import React from "react";
 import { Link, Globe } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
@@ -26,8 +7,8 @@ import Image from "next/image";
 
 const Experience = () => {
   return (
-    <div className="p-6 bg-gray-50 min-h-screen">
-      <h2 className="text-3xl font-bold mb-6">Experience</h2>
+    <div className="p-6 bg-stone-200 min-h-screen">
+      <h2 className="text-3xl font-bold mb-6 text-center">Experience</h2>
       <Card className="max-w-3xl mx-auto p-6 shadow-xl rounded-2xl bg-white">
         <CardContent className="flex flex-col md:flex-row gap-6">
           <div className="w-full md:w-1/3 flex items-center justify-center">

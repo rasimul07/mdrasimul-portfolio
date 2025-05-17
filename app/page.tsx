@@ -3,6 +3,7 @@ import { Contact } from "@/components/Contact";
 import Experience from "@/components/Experience";
 import Footer from "@/components/Footer";
 import Home from "@/components/Home";
+import Skills from "@/components/Skills";
 import { UIStore } from "@/store/ui.store";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
@@ -15,12 +16,17 @@ export default function Page() {
   const { ref: experienceRef, inView: experienceInView } = useInView({
     threshold: 0.5,
   });
+   const { ref: skillsRef, inView: skillsInView } = useInView({
+     threshold: 0.2,
+   });
   useEffect(() => {
     if (contactInView) setActiveSection("Contact");
     else if (homeInView) setActiveSection("Home");
     else if (experienceInView) setActiveSection("Experience");
+    else if (skillsInView) setActiveSection("Skills");
 
   }, [homeInView, contactInView, experienceInView]);
+
   return (
     <div className="overflow-x-hidden">
       <section id="Home" ref={homeRef}>
@@ -28,6 +34,9 @@ export default function Page() {
       </section>
       <section id="Experience" ref={experienceRef}>
         <Experience />
+      </section>
+      <section id="Skills" ref={skillsRef}>
+        <Skills />
       </section>
       <section id="Contact" ref={contactRef}>
         <Contact />
