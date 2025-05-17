@@ -11,7 +11,7 @@ export const sections = [
   // "About",
   "Experience",
   // "Projects",
-  // "Skills",
+  "Skills",
   // "Blogs",
   "Contact",
 ];

@@ -64,7 +64,7 @@ const Home: React.FC = () => {
             </div>
             <p className="text-gray-400 text-center a">
               I am highly passionate about my work, open-minded, and eager to
-              learn new things. Honesty is in my blood.
+              learn new things.
             </p>
             <div className="space-x-4 flex justify-center items-center mt-5">
               <a
