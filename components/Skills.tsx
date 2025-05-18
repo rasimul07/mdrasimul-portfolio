@@ -61,7 +61,7 @@ const Skills = () => {
               {skills.map((skill, index) => {
                 const angle = (index * 360) / skills.length;
                 const radius =
-                  typeof window !== "undefined" && window.innerWidth < 400
+                  typeof window === "undefined" || window.innerWidth < 400
                     ? 130
                     : 160;
                 const x = radius * Math.cos((angle * Math.PI) / 180);
