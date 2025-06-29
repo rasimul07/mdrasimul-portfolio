@@ -7,6 +7,7 @@ import { MyButton } from "./custom-ui/MyButton";
 
 export function Contact() {
   const [submitting, setSubmitting] = useState(false);
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
@@ -43,41 +44,63 @@ export function Contact() {
   }
 
   return (
-    <section className="flex justify-center my-5">
-      <div className="w-full space-y-5">
-        <h2 className="text-2xl font-bold text-center">Send me a message</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="grid grid-cols-1 gap-2 mx-5">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <div>
-                <label htmlFor="name">Name</label>
-                <Input
-                  type="text"
-                  name="name"
-                  required
-                  placeholder="Your name"
-                />
-              </div>
-              <div>
-                <label htmlFor="email">Email</label>
-                <Input
-                  type="email"
-                  name="email"
-                  required
-                  placeholder="email@example.com"
-                />
-              </div>
-            </div>
+    <section className="flex justify-center items-center min-h-screen bg-stone-200 px-4 py-10">
+      <div className="w-full max-w-3xl bg-white shadow-xl rounded-2xl p-8 space-y-8">
+        <h2 className="text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-slate-700 to-slate-800">
+          Send me a message
+        </h2>
 
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label htmlFor="message">Message</label>
-              <Textarea
-                name="message"
+              <label
+                htmlFor="name"
+                className="block mb-1 font-medium text-gray-700"
+              >
+                Name
+              </label>
+              <Input
+                type="text"
+                name="name"
                 required
-                rows={3}
-                placeholder="Enter Message"
-              ></Textarea>
+                placeholder="Your name"
+                className="rounded-xl shadow-sm"
+              />
             </div>
+            <div>
+              <label
+                htmlFor="email"
+                className="block mb-1 font-medium text-gray-700"
+              >
+                Email
+              </label>
+              <Input
+                type="email"
+                name="email"
+                required
+                placeholder="email@example.com"
+                className="rounded-xl shadow-sm"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label
+              htmlFor="message"
+              className="block mb-1 font-medium text-gray-700"
+            >
+              Message
+            </label>
+            <Textarea
+              name="message"
+              required
+              rows={4}
+              placeholder="Enter your message..."
+              className="rounded-xl shadow-sm"
+            />
+          </div>
+
+          <div className="text-center">
             <MyButton loading={submitting} type="submit">
               Submit
             </MyButton>
