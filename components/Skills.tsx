@@ -28,15 +28,15 @@ const Skills = () => {
   const orbRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="min-h-screen bg-black py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <div className="min-h-screen bg-white py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Background grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <h2 className="text-white text-center text-3xl font-bold mb-6">
+        <h2 className="text-center text-4xl mb-6 font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-700 to-slate-800">
           Skills
         </h2>
-        <p className="text-center text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-30">
+        <p className="text-center text-slate-700 text-lg md:text-xl max-w-2xl mx-auto mb-30">
           My key expertise and technical proficiencies
         </p>
         <div
@@ -82,7 +82,7 @@ const Skills = () => {
                     onMouseLeave={() => setHoveredSkill(null)}
                   >
                     <div
-                      className={`px-3 py-1 rounded-full text-xs md:text-sm font-medium transition-all duration-300 border text-white ${
+                      className={`px-3 py-1 rounded-full text-xs md:text-sm font-medium transition-all duration-300 border text-black shadow-xl ${
                         hoveredSkill === index
                           ? "bg-black/10 shadow-lg shadow-black/50 "
                           : "bg-black/10 backdrop-blur-sm"

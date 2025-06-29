@@ -5,10 +5,11 @@ import Image from "next/image";
 import React, { useState } from "react";
 import SideMenu from "./SideMenu";
 import { UIStore } from "@/store/ui.store";
+import { handleScrollToFeatures } from "./ScrollBehaviour";
 
 export const sections = [
   "Home",
-  // "About",
+  "About",
   "Experience",
   // "Projects",
   "Skills",
@@ -18,13 +19,7 @@ export const sections = [
 const Navbar = ({ isTop }: { isTop: boolean }) => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const { activeSection } = UIStore();
-  const handleScrollToFeatures = (section:string) => {
-    const element = document.getElementById(section);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
- 
+
   return (
     <nav className="fixed top-0 h-[70px] w-full z-50">
       <motion.div
@@ -65,7 +60,7 @@ const Navbar = ({ isTop }: { isTop: boolean }) => {
                 animate={activeSection === section ? "active" : "rest"}
                 key={index}
                 onClick={() => {
-                  handleScrollToFeatures(section)
+                  handleScrollToFeatures(section);
                 }}
               >
                 <span>{section}</span>

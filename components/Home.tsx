@@ -7,6 +7,7 @@ import Navbar from "./Navbar";
 import Magnet from "./custom-ui/Magnet";
 import PixelTransition from "./custom-ui/PixelTransition";
 import MyNameSpotLight from "./custom-ui/MyNameSpotLight";
+import { handleScrollToFeatures } from "./ScrollBehaviour";
 
 const Home: React.FC = () => {
   const { scrollYProgress } = useScroll();
@@ -72,7 +73,6 @@ const Home: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="cursor-pointer z-2"
-              
               >
                 <ShinyText
                   text="Resume"
@@ -81,8 +81,13 @@ const Home: React.FC = () => {
                   className="border border-white rounded-full text-lg px-2 font-semibold z-1"
                 />
               </a>
-              <div className="">  
-                <Magnet padding={30} disabled={false} magnetStrength={1}>
+              <div className="">
+                <Magnet
+                  padding={30}
+                  disabled={false}
+                  magnetStrength={1}
+                  onClick={() => handleScrollToFeatures("Contact")}
+                >
                   <ShinyText
                     text="Hire me!"
                     disabled={false}
