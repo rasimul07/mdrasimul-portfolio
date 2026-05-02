@@ -32,7 +32,7 @@ const Experience = () => {
             Professional Experience
           </h2>
           <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-            My career journey and the amazing companies I've had the privilege to work with.
+            My career journey and the amazing companies I&apos;ve had the privilege to work with.
           </p>
         </div>
 

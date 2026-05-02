@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useScroll, useMotionValueEvent } from "motion/react";
 import React, { useState } from "react";
 import Particles from "./custom-ui/Particles";
