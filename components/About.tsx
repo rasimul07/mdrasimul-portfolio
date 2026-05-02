@@ -23,17 +23,17 @@ const educationData = [
 const About = () => {
   return (
     <div className="flex flex-col items-center justify-center w-full bg-gradient-to-br from-white to-gray-100 text-gray-800 py-12 px-6 space-y-10">
-      <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-700 to-slate-800">
+      <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-700 to-slate-800 mt-5">
         About Me
       </h2>
 
       <table className="w-full max-w-4xl table-auto text-left text-base">
-        <tbody>
-          <tr className="align-top">
-            <th className="pr-6 py-4 text-transparent bg-clip-text bg-gradient-to-r from-slate-500 to-slate-600 font-semibold w-1/4">
+        <tbody className="block md:table-row-group">
+          <tr className="flex flex-col md:table-row align-top mb-8 md:mb-0 border-b border-gray-200 md:border-none pb-6 md:pb-0">
+            <th className="md:pr-6 py-2 md:py-4 text-transparent bg-clip-text bg-gradient-to-r from-slate-500 to-slate-600 font-semibold w-full md:w-1/4 text-left text-xl md:text-base">
               Introduction
             </th>
-            <td className="py-4">
+            <td className="py-2 md:py-4 block md:table-cell">
               I’m a{" "}
               <span className="font-semibold text-slate-700">
                 goal-oriented
@@ -51,19 +51,19 @@ const About = () => {
               capabilities.
             </td>
           </tr>
-          <tr className="align-top">
-            <th className="pr-6 py-4 text-transparent bg-clip-text bg-gradient-to-r from-slate-500 to-slate-600 font-semibold w-1/4">
+          <tr className="flex flex-col md:table-row align-top mb-8 md:mb-0 border-b border-gray-200 md:border-none pb-6 md:pb-0">
+            <th className="md:pr-6 py-2 md:py-4 text-transparent bg-clip-text bg-gradient-to-r from-slate-500 to-slate-600 font-semibold w-full md:w-1/4 text-left text-xl md:text-base">
               Age
             </th>
-            <td className="py-4 text-slate-700 font-bold text-xl">
+            <td className="py-2 md:py-4 text-slate-700 font-bold text-xl block md:table-cell">
               {calculateAge()} years old
             </td>
           </tr>
-          <tr className="align-top">
-            <th className="pr-6 py-4 text-transparent bg-clip-text bg-gradient-to-r from-slate-500 to-slate-600 font-semibold w-1/4 align-top">
+          <tr className="flex flex-col md:table-row align-top pb-6 md:pb-0">
+            <th className="md:pr-6 py-2 md:py-4 text-transparent bg-clip-text bg-gradient-to-r from-slate-500 to-slate-600 font-semibold w-full md:w-1/4 text-left text-xl md:text-base">
               Education
             </th>
-            <td className="py-4">
+            <td className="py-2 md:py-4 block md:table-cell mt-4 md:mt-0">
               <div className="relative border-l-4 border-black pl-6 space-y-10">
                 {educationData.map((item, index) => (
                   <div key={index} className="relative">

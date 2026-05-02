@@ -4,15 +4,17 @@ import { Contact } from "@/components/Contact";
 import Experience from "@/components/Experience";
 import Footer from "@/components/Footer";
 import Home from "@/components/Home";
+import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import { UIStore } from "@/store/ui.store";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
+
 export default function Page() {
   const { setActiveSection } = UIStore();
+
   const { ref: homeRef, inView: homeInView } = useInView({ threshold: 0.5 });
   const { ref: aboutRef, inView: aboutInView } = useInView({ threshold: 0.5 });
-
   const { ref: contactRef, inView: contactInView } = useInView({
     threshold: 0.5,
   });
@@ -22,13 +24,26 @@ export default function Page() {
   const { ref: skillsRef, inView: skillsInView } = useInView({
     threshold: 0.2,
   });
+  const { ref: projectsRef, inView: projectsInView } = useInView({
+    threshold: 0.2,
+  });
+
   useEffect(() => {
     if (contactInView) setActiveSection("Contact");
     else if (homeInView) setActiveSection("Home");
     else if (experienceInView) setActiveSection("Experience");
+    else if (projectsInView) setActiveSection("Projects");
     else if (skillsInView) setActiveSection("Skills");
     else if (aboutInView) setActiveSection("About");
-  }, [homeInView, contactInView, experienceInView, aboutInView, skillsInView]);
+  }, [
+    homeInView,
+    contactInView,
+    experienceInView,
+    aboutInView,
+    skillsInView,
+    projectsInView,
+    setActiveSection,
+  ]);
 
   return (
     <div className="overflow-x-hidden">
@@ -43,6 +58,9 @@ export default function Page() {
       </section>
       <section id="Skills" ref={skillsRef}>
         <Skills />
+      </section>
+      <section id="Projects" ref={projectsRef}>
+        <Projects />
       </section>
       <section id="Contact" ref={contactRef}>
         <Contact />
