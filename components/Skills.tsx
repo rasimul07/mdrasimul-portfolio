@@ -69,7 +69,7 @@ const Skills = () => {
               hoverIntensity={isHovering ? 0.9 : 0.6}
               rotateOnHover={true}
               forceHoverState={isHovering}
-              className="w-full h-full"
+              className="w-full h-full grayscale contrast-125 brightness-150"
               size="md"
             />
           </div>
