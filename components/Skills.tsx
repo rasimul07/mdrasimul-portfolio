@@ -1,5 +1,6 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 import Orb from "./custom-ui/Orb";
 import "./Skills.css";
 
@@ -22,87 +23,84 @@ const skills = [
 ];
 
 const Skills = () => {
-  const [hoveredSkill, setHoveredSkill] = useState<number | null>(null);
   const [isHovering, setIsHovering] = useState<boolean>(false);
 
-  const orbRef = useRef<HTMLDivElement>(null);
+  // Animation variants for staggering skills
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300 } },
+  };
 
   return (
-    <div className="min-h-screen bg-white py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <div className="min-h-[600px] bg-white py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden flex flex-col justify-center">
       {/* Background grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
-
-      <div className="max-w-7xl mx-auto relative z-10">
-        <h2 className="text-center text-4xl mb-6 font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-700 to-slate-800">
-          Skills
-        </h2>
-        <p className="text-center text-slate-700 text-lg md:text-xl max-w-2xl mx-auto mb-30">
-          My key expertise and technical proficiencies
-        </p>
-        <div
-          className="flex justify-center items-center "
-          onMouseEnter={() => setIsHovering(true)}
-          onMouseLeave={() => setIsHovering(false)}
-        >
-          <div ref={orbRef} className="relative h-40 w-40 md:h-60 md:w-60">
-            <Orb
-              hue={200}
-              hoverIntensity={isHovering ? 0.8 : 0.5}
-              rotateOnHover={true}
-              forceHoverState={isHovering}
-              className="w-full h-full"
-              size={
-                typeof window !== "undefined" && window.innerWidth < 400
-                  ? "sm"
-                  : "md"
-              }
-            />
-            <div className="absolute inset-0 flex items-center justify-center">
-              {skills.map((skill, index) => {
-                const angle = (index * 360) / skills.length;
-                const radius =
-                  typeof window === "undefined" || window.innerWidth < 400
-                    ? 130
-                    : 160;
-                const x = radius * Math.cos((angle * Math.PI) / 180);
-                const y = radius * Math.sin((angle * Math.PI) / 180);
-
-                return (
-                  <div
-                    key={index}
-                    className={`absolute transition-all duration-500 transform ${
-                      hoveredSkill === index ? "scale-105 z-20" : "scale-100"
-                    }`}
-                    style={{
-                      transform: `translate(${x}px, ${y}px) ${
-                        hoveredSkill === index ? "scale(1.2)" : ""
-                      }`,
-                    }}
-                    onMouseEnter={() => setHoveredSkill(index)}
-                    onMouseLeave={() => setHoveredSkill(null)}
-                  >
-                    <div
-                      className={`px-3 py-1 rounded-full text-xs md:text-sm font-medium transition-all duration-300 border text-black shadow-xl ${
-                        hoveredSkill === index
-                          ? "bg-black/10 shadow-lg shadow-black/50 "
-                          : "bg-black/10 backdrop-blur-sm"
-                      }`}
-                    >
-                      {skill}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Glow effects */}
       <div className="absolute -bottom-1/3 -left-1/3 w-full aspect-square rounded-full bg-blue-900/10 blur-3xl pointer-events-none"></div>
       <div className="absolute -top-1/3 -right-1/3 w-full aspect-square rounded-full bg-blue-900/10 blur-3xl pointer-events-none"></div>
+
+      <div className="max-w-6xl mx-auto relative z-10 w-full flex flex-col lg:flex-row items-center justify-between gap-12">
+        
+        {/* Left Side: Text and Orb */}
+        <div className="flex flex-col items-center lg:items-start text-center lg:text-left flex-1"
+             onMouseEnter={() => setIsHovering(true)}
+             onMouseLeave={() => setIsHovering(false)}>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-700 to-slate-900 mb-6">
+            Technical Arsenal
+          </h2>
+          <p className="text-slate-600 text-lg md:text-xl max-w-lg mb-8">
+            A comprehensive toolkit of languages, frameworks, and technologies I use to build robust and scalable applications.
+          </p>
+          
+          <div className="relative h-48 w-48 md:h-64 md:w-64 flex-shrink-0 mb-8 lg:mb-0">
+            <Orb
+              hue={210}
+              hoverIntensity={isHovering ? 0.9 : 0.6}
+              rotateOnHover={true}
+              forceHoverState={isHovering}
+              className="w-full h-full"
+              size="md"
+            />
+          </div>
+        </div>
+
+        {/* Right Side: Skills Grid */}
+        <div className="flex-1 w-full max-w-2xl">
+           <motion.div 
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+            className="flex flex-wrap justify-center lg:justify-start gap-3 md:gap-4"
+          >
+            {skills.map((skill, index) => (
+              <motion.div
+                key={index}
+                variants={item}
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="px-5 py-3 rounded-xl text-sm md:text-base font-semibold transition-all duration-300 border border-slate-200/60 bg-white/60 backdrop-blur-md text-slate-800 shadow-sm hover:shadow-xl hover:shadow-blue-500/10 hover:border-blue-200 hover:bg-blue-50/50 cursor-default"
+              >
+                {skill}
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+
+      </div>
     </div>
   );
 };
 
 export default Skills;
+

@@ -11,23 +11,26 @@ export const sections = [
   "Home",
   "About",
   "Experience",
-  // "Projects",
   "Skills",
+  "Projects",
   // "Blogs",
   "Contact",
 ];
 const Navbar = ({ isTop }: { isTop: boolean }) => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const { activeSection } = UIStore();
+  console.log(activeSection);
 
   return (
     <nav className="fixed top-0 h-[70px] w-full z-50">
       <motion.div
-        className="flex justify-between md:grid md:grid-cols-12 h-full w-full"
+        className={`flex justify-between md:grid md:grid-cols-12 h-full w-full ${
+          isTop ? "" : "backdrop-blur-3xl"
+        }`}
         animate={{
           backgroundColor: isTop
             ? "rgba(255,255,255,0)"
-            : "rgba(255,255,255,1)",
+            : "rgba(255,255,255,0.8)",
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
       >

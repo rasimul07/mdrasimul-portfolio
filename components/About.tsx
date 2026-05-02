@@ -23,7 +23,7 @@ const educationData = [
 const About = () => {
   return (
     <div className="flex flex-col items-center justify-center w-full bg-gradient-to-br from-white to-gray-100 text-gray-800 py-12 px-6 space-y-10">
-      <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-700 to-slate-800">
+      <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-700 to-slate-800 mt-5">
         About Me
       </h2>
 
