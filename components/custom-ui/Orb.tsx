@@ -587,6 +587,7 @@ export default function Orb({
       gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
     // ... (rest of your existing useEffect code)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hue, hoverIntensity, rotateOnHover, forceHoverState, size]);
 
   // Size classes mapping
