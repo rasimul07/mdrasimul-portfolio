@@ -66,7 +66,8 @@ const Projects = () => {
 
     const tween = gsap.to(horizontal, {
       x: () => -getScrollAmount(),
-      ease: "none",
+      duration:500,
+      ease: "linear",
       scrollTrigger: {
         trigger: horizontal.parentElement as HTMLElement,
         pin: true,
@@ -83,8 +84,8 @@ const Projects = () => {
   }, []);
 
   return (
-    <div className="h-screen relative overflow-hidden bg-stone-200">
-      <div ref={horizontalRef} className="flex h-full mt-[70px]">
+    <div className="h-90vh relative overflow-hidden bg-stone-200">
+      <div ref={horizontalRef} className="flex h-full md:mt-[70px]">
         {/* Title Slide */}
         <div className="slide flex-none w-screen h-screen flex flex-col justify-center items-center text-center px-4 bg-white border-r border-slate-200">
           <h2 className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-700 to-slate-900 mb-6">
@@ -102,10 +103,10 @@ const Projects = () => {
 
         {/* Project Slides */}
         {projectsData.map((project) => (
-          <div key={project.id} className={`slide flex-none w-screen h-screen flex flex-col md:flex-row justify-center items-center p-8 md:p-24 border-r border-slate-200 ${project.color}`}>
+          <div key={project.id} className={`slide flex-none w-11/12 h-90vh flex flex-col md:flex-row justify-center p-8 border-r border-slate-200 ${project.color}`}>
             {/* Image side */}
-            <div className="w-full md:w-1/2 h-[40vh] md:h-[60vh] relative rounded-2xl overflow-hidden shadow-2xl bg-slate-200 mb-8 md:mb-0 md:mr-12 group">
-              <img 
+            <div className="w-full md:w-1/2 h-[30vh] md:h-[60vh] relative rounded-2xl overflow-hidden shadow-2xl bg-slate-200 mb-8 md:mb-0 md:mr-12 group">
+              <img
                 src={project.image} 
                 alt={project.title} 
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -113,7 +114,7 @@ const Projects = () => {
             </div>
             
             {/* Text side */}
-            <div className="w-full md:w-1/2 flex flex-col justify-center items-start text-left">
+            <div className="w-full md:w-1/2 flex flex-col items-start text-left">
               <h3 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">
                 {project.title}
               </h3>
