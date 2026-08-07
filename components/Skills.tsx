@@ -63,16 +63,6 @@ const Skills = () => {
             A comprehensive toolkit of languages, frameworks, and technologies I use to build robust and scalable applications.
           </p>
           
-          <div className="relative h-48 w-48 md:h-64 md:w-64 flex-shrink-0 mb-8 lg:mb-0">
-            <Orb
-              hue={210}
-              hoverIntensity={isHovering ? 0.9 : 0.6}
-              rotateOnHover={true}
-              forceHoverState={isHovering}
-              className="w-full h-full grayscale contrast-125 brightness-150"
-              size="md"
-            />
-          </div>
         </div>
 
         {/* Right Side: Skills Grid */}
