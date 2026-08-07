@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import Orb from "./custom-ui/Orb";
 import "./Skills.css";
 
 const skills = [
@@ -23,8 +22,6 @@ const skills = [
 ];
 
 const Skills = () => {
-  const [isHovering, setIsHovering] = useState<boolean>(false);
-
   // Animation variants for staggering skills
   const container = {
     hidden: { opacity: 0 },
@@ -54,8 +51,7 @@ const Skills = () => {
         
         {/* Left Side: Text and Orb */}
         <div className="flex flex-col items-center lg:items-start text-center lg:text-left flex-1"
-             onMouseEnter={() => setIsHovering(true)}
-             onMouseLeave={() => setIsHovering(false)}>
+        >
           <h2 className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-700 to-slate-900 mb-6">
             Technical Arsenal
           </h2>
@@ -63,16 +59,6 @@ const Skills = () => {
             A comprehensive toolkit of languages, frameworks, and technologies I use to build robust and scalable applications.
           </p>
           
-          <div className="relative h-48 w-48 md:h-64 md:w-64 flex-shrink-0 mb-8 lg:mb-0">
-            <Orb
-              hue={210}
-              hoverIntensity={isHovering ? 0.9 : 0.6}
-              rotateOnHover={true}
-              forceHoverState={isHovering}
-              className="w-full h-full grayscale contrast-125 brightness-150"
-              size="md"
-            />
-          </div>
         </div>
 
         {/* Right Side: Skills Grid */}
