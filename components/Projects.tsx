@@ -15,7 +15,7 @@ const projectsData = [
     description: "A robust GPA calculator for university students with an intuitive interface.",
     image: "/gpa/image.png", // Replace with your image paths
     tags: ["React", "TailwindCSS"],
-    liveUrl: "#", 
+    liveUrl: "https://gpa-calculalor-using-next-js.vercel.app", 
     githubUrl: "#",
     color: "bg-stone-50",
   },
