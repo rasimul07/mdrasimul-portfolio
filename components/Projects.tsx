@@ -11,12 +11,13 @@ gsap.registerPlugin(ScrollTrigger);
 const projectsData = [
   {
     id: 1,
-    title: "GPA Calculator",
-    description: "A robust GPA calculator for university students with an intuitive interface.",
-    image: "/gpa/image.png", // Replace with your image paths
-    tags: ["React", "TailwindCSS"],
-    liveUrl: "https://gpa-calculalor-using-next-js.vercel.app", 
-    githubUrl: "#",
+    title: "MAKAUT GPA Calculator",
+    description:
+      "Full-stack GPA platform for MAKAUT students — free SGPA, YGPA, DGPA, and percentage calculators, a GPA goal analyzer, user accounts, premium GPA store, and real-time unlock via Socket.io.",
+    image: "/gpa/image.png",
+    tags: ["Next.js", "React", "MUI", "MongoDB", "Socket.io"],
+    liveUrl: "https://gpa.tool.mridev.in",
+    githubUrl: "https://github.com/rasimul07/GPA-Calculator",
     color: "bg-stone-50",
   },
   {
