@@ -17,7 +17,7 @@ const projectsData = [
     image: "/gpa/image.png",
     tags: ["Next.js", "React", "MUI", "MongoDB", "Socket.io"],
     liveUrl: "https://gpa.tool.mridev.in",
-    githubUrl: "https://github.com/rasimul07/GPA-Calculator",
+    githubUrl: "https://github.com/rasimul07/GPA-Calculalor-Using-NextJS",
     color: "bg-stone-50",
   },
   {
