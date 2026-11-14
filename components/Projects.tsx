@@ -232,7 +232,7 @@ const Projects = () => {
         "(min-width: 1280px)": () => {
           const getScrollAmount = () => Math.max(horizontal.scrollWidth - window.innerWidth, 0);
 
-          const tween = gsap.to(horizontal, {
+          gsap.to(horizontal, {
             x: () => -getScrollAmount(),
             ease: "none",
             scrollTrigger: {
