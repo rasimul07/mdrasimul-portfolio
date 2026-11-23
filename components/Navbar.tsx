@@ -19,7 +19,6 @@ export const sections = [
 const Navbar = ({ isTop }: { isTop: boolean }) => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const { activeSection } = UIStore();
-  console.log(activeSection);
 
   return (
     <nav className="fixed top-0 h-[70px] w-full z-50">

@@ -8,17 +8,29 @@ import {
   Database,
   Layers,
   Server,
-  Wrench,
+  Smartphone,
+  Cpu,
+  BookOpen,
+  Share2,
 } from "lucide-react";
 import "./Skills.css";
 
 const skillCategories = [
   {
     id: "languages",
-    title: "Languages & Core",
+    title: "Fundamentals & Core",
     icon: Code2,
     accent: "from-slate-600 to-slate-800",
-    skills: ["JavaScript", "TypeScript", "HTML", "CSS", "C", "C++"],
+    skills: [
+      "JavaScript (ES6+)",
+      "TypeScript",
+      "HTML5",
+      "CSS3",
+      "WebSocket",
+      "Redis",
+      "C",
+      "C++",
+    ],
   },
   {
     id: "frontend",
@@ -26,63 +38,116 @@ const skillCategories = [
     icon: Layers,
     accent: "from-violet-500 to-indigo-600",
     skills: [
-      "React",
+      "React.js",
       "Next.js",
-      "React Native",
-      "Redux",
+      "Material UI",
       "Tailwind CSS",
-      "MUI",
+      "Redux",
       "GSAP",
       "Framer Motion",
-      "Ionic",
+    ],
+  },
+  {
+    id: "mobile",
+    title: "Mobile Development",
+    icon: Smartphone,
+    accent: "from-pink-500 to-rose-600",
+    skills: [
+      "React Native",
+      "Ionic React",
       "Capacitor",
+      "Expo",
+      "Android Studio",
+      "Xcode",
+      "iOS CallKit & PushKit",
+      "Google Play Console",
+      "App Store Connect",
     ],
   },
   {
     id: "backend",
-    title: "Backend & APIs",
+    title: "Backend & Real-Time",
     icon: Server,
     accent: "from-amber-500 to-orange-600",
     skills: [
       "Node.js",
       "Express.js",
       "REST APIs",
+      "WebRTC (Audio/Video)",
       "Socket.io",
-      "Chrome Extension APIs",
-      "Manifest V3",
+      "FCM Push Notifications",
+      "WhatsApp Business API",
     ],
   },
   {
     id: "databases",
-    title: "Databases",
+    title: "Databases & Caching",
     icon: Database,
     accent: "from-emerald-500 to-teal-600",
-    skills: ["MongoDB", "PostgreSQL", "Supabase", "MySQL"],
+    skills: ["MongoDB", "MySQL", "PostgreSQL", "Supabase", "Redis"],
   },
   {
-    id: "devops",
-    title: "DevOps & Tooling",
-    icon: Wrench,
-    accent: "from-sky-500 to-blue-600",
+    id: "integrations",
+    title: "Integrations & Services",
+    icon: Share2,
+    accent: "from-blue-500 to-indigo-600",
     skills: [
-      "Git",
-      "GitHub",
-      "GitHub Packages",
-      "GitHub Actions",
-      "CI/CD",
-      "Docker",
-      "Docker Compose",
-      "Linux",
-      "Nginx",
-      "PM2",
+      "Payment Gateways",
+      "DigiLocker Verification",
+      "OTP Authentication",
+      "Google Maps",
+      "Ola Maps",
+      "GST Filing (GSTR-1 & 3B)",
+      "Role-Based Access (RBAC)",
     ],
   },
   {
-    id: "cloud",
-    title: "Cloud & Deploy",
+    id: "devops",
+    title: "DevOps & Cloud",
     icon: Cloud,
-    accent: "from-rose-500 to-pink-600",
-    skills: ["AWS EC2", "AWS RDS", "Vercel", "Environment Config", "SSH Deploy"],
+    accent: "from-sky-500 to-blue-600",
+    skills: [
+      "Git",
+      "GitHub Actions (CI/CD)",
+      "Docker",
+      "Docker Compose",
+      "Railway",
+      "Hostinger VPS",
+      "AWS EC2",
+      "Linux",
+      "Nginx",
+      "Vercel",
+    ],
+  },
+  {
+    id: "ai_tooling",
+    title: "AI & Modern Workflow",
+    icon: Cpu,
+    accent: "from-purple-500 to-violet-600",
+    skills: [
+      "Claude",
+      "Cursor AI",
+      "Gemini",
+      "LLM Tooling",
+      "CNN (Deep Learning)",
+      "VS Code",
+      "Touch Typing",
+      "macOS",
+    ],
+  },
+  {
+    id: "coursework",
+    title: "Course Work & CS Core",
+    icon: BookOpen,
+    accent: "from-teal-500 to-emerald-600",
+    skills: [
+      "Data Structures & Algorithms (DSA)",
+      "DBMS",
+      "Computer Networks (CN)",
+      "Operating Systems (OS)",
+      "Object-Oriented Programming (OOPS)",
+      "Problem Solving",
+    ],
   },
 ];
 
@@ -90,7 +155,7 @@ const container = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.08 },
+    transition: { staggerChildren: 0.06 },
   },
 };
 
@@ -112,14 +177,13 @@ const Skills = () => {
         <div className="mx-auto mb-14 max-w-3xl text-center">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-4 py-2 text-sm font-medium text-slate-600 shadow-sm">
             <Braces className="h-4 w-4" />
-            {totalSkills}+ technologies
+            {totalSkills}+ Technologies &amp; Disciplines
           </div>
           <h2 className="text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-slate-700 to-slate-900 md:text-5xl">
             Technical Arsenal
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-slate-600">
-            Frontend, backend, databases, and production tooling — from React apps and Chrome extensions
-            to Node.js APIs with PostgreSQL, Supabase, Docker, and CI/CD pipelines.
+          <p className="mt-4 text-base md:text-lg leading-relaxed text-slate-600">
+            A comprehensive suite spanning full stack web, cross-platform mobile apps, real-time communications, production databases, cloud DevOps, and AI-accelerated workflows.
           </p>
         </div>
 
@@ -136,29 +200,31 @@ const Skills = () => {
               <motion.article
                 key={category.id}
                 variants={item}
-                className="rounded-[1.5rem] border border-slate-200/80 bg-white/75 p-5 shadow-sm backdrop-blur-sm transition hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-200/60 sm:p-6"
+                className="rounded-[1.5rem] border border-slate-200/80 bg-white/80 p-5 shadow-xs backdrop-blur-sm transition hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-200/60 sm:p-6 flex flex-col justify-between"
               >
-                <div className="mb-4 flex items-center gap-3">
-                  <div
-                    className={`flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br ${category.accent} text-white shadow-md`}
-                  >
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-slate-900">{category.title}</h3>
-                    <p className="text-sm text-slate-500">{category.skills.length} skills</p>
-                  </div>
-                </div>
-
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="rounded-full border border-slate-200/80 bg-slate-50 px-3 py-1.5 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:bg-white"
+                <div>
+                  <div className="mb-4 flex items-center gap-3">
+                    <div
+                      className={`flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br ${category.accent} text-white shadow-md`}
                     >
-                      {skill}
-                    </span>
-                  ))}
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-slate-900">{category.title}</h3>
+                      <p className="text-xs text-slate-500 font-medium">{category.skills.length} skills</p>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    {category.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="rounded-full border border-slate-200/80 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-white"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </motion.article>
             );

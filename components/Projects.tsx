@@ -7,66 +7,90 @@ import { ArrowRight, ExternalLink, Github } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const projectsData = [
+export interface ProjectItem {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  liveUrl?: string;
+  githubUrl?: string;
+  githubUrls?: { label: string; url: string }[];
+  accent: string;
+  surface: string;
+  imageFit?: "contain" | "cover";
+}
+
+const projectsData: ProjectItem[] = [
   {
     id: 1,
-    title: "MAKAUT GPA Calculator",
+    title: "Full Stack GPA Finder",
     description:
-      "Full-stack GPA platform for MAKAUT students — SGPA, YGPA, DGPA, and percentage calculators, GPA goal analyzer, user accounts, premium GPA store, and real-time unlock with Socket.io on a Next.js + MongoDB stack.",
+      "Production GPA calculation and academic analysis platform for university students. Features SGPA, YGPA, DGPA, and percentage calculators, user authentication, credit-score storage, REST API integration, and personalized academic goal analysis on Next.js + MongoDB.",
     image: "/gpa/image.png",
-    tags: ["Next.js", "React", "MUI", "MongoDB", "Socket.io", "Node.js", "Git"],
+    tags: ["Next.js", "Node.js", "Material UI", "JWT", "MongoDB", "Socket.io", "Git", "REST APIs"],
     liveUrl: "https://gpa.tool.mridev.in",
     githubUrl: "https://github.com/rasimul07/GPA-Calculalor-Using-NextJS",
     accent: "from-violet-500 to-indigo-600",
     surface: "from-violet-50/80 via-white to-indigo-50/60",
-    imageFit: "contain" as const,
+    imageFit: "contain",
   },
   {
     id: 2,
-    title: "IRCTC Rapid Tatkal",
+    title: "AI Skinify Mobile App",
     description:
-      "Production Chrome extension for IRCTC Tatkal auto-booking with saved profiles, scheduled auto-start, eticket and nget flows, and payment gateway handoff. Backend: Express API, PostgreSQL on Supabase, Docker Compose, GitHub Actions CI/CD, and shared core published to GitHub Packages.",
+      "Cross-platform Android application created for a final-year engineering project. Implements user authentication, secure skin image uploads, and feature-based skin condition prediction powered by Convolutional Neural Networks (CNN) with a Node.js & Express REST API backend.",
+    image: "/skinify.svg",
+    tags: [
+      "React Native",
+      "React Native Elements",
+      "Node.js",
+      "Express.js",
+      "CNN (Deep Learning)",
+      "REST APIs",
+      "Git",
+    ],
+    githubUrls: [
+      { label: "Client App", url: "https://github.com/rasimul07/SDD_Client_App" },
+      { label: "AI Backend", url: "https://github.com/rasimul07/Skin_Disease_Detector_Backend" },
+    ],
+    accent: "from-rose-500 to-red-600",
+    surface: "from-rose-50/80 via-white to-red-50/60",
+    imageFit: "contain",
+  },
+  {
+    id: 3,
+    title: "IRCTC Tatkal Ticket Booking Assistant",
+    description:
+      "Automated IRCTC Tatkal booking Chrome extension and cross-platform companion mobile app featuring scheduled alarms, rapid passenger form autofill, status overlays, and payment gateway support. Built with TypeScript, Node.js API, PostgreSQL on Supabase, Docker, and CI/CD.",
     image: "/chrome-extension.png",
     tags: [
       "Chrome Extension",
       "TypeScript",
       "Node.js",
       "Express",
+      "Ionic",
+      "Capacitor",
       "PostgreSQL",
       "Supabase",
       "Docker",
       "CI/CD",
-      "GitHub Packages",
     ],
     liveUrl: "https://www.rapidtatkal.tool.mridev.in/",
     githubUrl: "https://github.com/rasimul07/irctc-auto-ticket",
     accent: "from-amber-500 to-orange-600",
     surface: "from-amber-50/90 via-white to-orange-50/70",
-    imageFit: "contain" as const,
-  },
-  {
-    id: 3,
-    title: "Rapid Tatkal Mobile",
-    description:
-      "Cross-platform companion app for IRCTC Tatkal booking built with Ionic and Capacitor, consuming the shared @rasimul07/core package for booking logic, local secure storage, and Android/iOS deployment workflows.",
-    image: "/chrome-extension.png",
-    tags: ["Ionic", "Capacitor", "React", "TypeScript", "Vite", "GitHub Packages"],
-    liveUrl: "https://www.rapidtatkal.tool.mridev.in/",
-    githubUrl: "https://github.com/rasimul07/irctc-auto-ticket",
-    accent: "from-emerald-500 to-teal-600",
-    surface: "from-emerald-50/80 via-white to-teal-50/60",
-    imageFit: "contain" as const,
+    imageFit: "contain",
   },
 ];
 
-type Project = (typeof projectsData)[number];
+type Project = ProjectItem;
 type CardLayout = "stack" | "slide";
 
 const MAX_TAGS = 6;
 
 function ProjectLinks({ project, compact = false }: { project: Project; compact?: boolean }) {
   const hasLive = project.liveUrl && project.liveUrl !== "#";
-  const hasGithub = project.githubUrl && project.githubUrl !== "#";
   const btnClass = compact ? "px-4 py-2 text-xs sm:text-sm" : "px-5 py-2.5 text-sm";
 
   return (
@@ -82,7 +106,21 @@ function ProjectLinks({ project, compact = false }: { project: Project; compact?
           Live Demo
         </a>
       )}
-      {hasGithub && (
+
+      {project.githubUrls ? (
+        project.githubUrls.map((glink, i) => (
+          <a
+            key={i}
+            href={glink.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white ${btnClass} font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-slate-50`}
+          >
+            <Github size={compact ? 16 : 18} />
+            {glink.label}
+          </a>
+        ))
+      ) : project.githubUrl && project.githubUrl !== "#" ? (
         <a
           href={project.githubUrl}
           target="_blank"
@@ -92,7 +130,7 @@ function ProjectLinks({ project, compact = false }: { project: Project; compact?
           <Github size={compact ? 16 : 18} />
           Source Code
         </a>
-      )}
+      ) : null}
     </div>
   );
 }
@@ -106,7 +144,7 @@ function ProjectTags({ tags, compact = false }: { tags: string[]; compact?: bool
       {visible.map((tag) => (
         <span
           key={tag}
-          className={`rounded-full border border-slate-200/80 bg-white/90 font-medium text-slate-700 shadow-sm ${
+          className={`rounded-full border border-slate-200/80 bg-white/90 font-medium text-slate-700 shadow-xs ${
             compact ? "px-2.5 py-1 text-xs" : "px-3 py-1.5 text-xs sm:text-sm"
           }`}
         >
@@ -227,33 +265,28 @@ const Projects = () => {
     const horizontal = horizontalRef.current;
     if (!section || !horizontal) return;
 
-    const ctx = gsap.context(() => {
-      ScrollTrigger.matchMedia({
-        "(min-width: 1280px)": () => {
-          const getScrollAmount = () => Math.max(horizontal.scrollWidth - window.innerWidth, 0);
+    const mm = gsap.matchMedia();
 
-          gsap.to(horizontal, {
-            x: () => -getScrollAmount(),
-            ease: "none",
-            scrollTrigger: {
-              trigger: section,
-              pin: true,
-              scrub: 0.8,
-              start: "top top",
-              end: () => `+=${getScrollAmount()}`,
-              invalidateOnRefresh: true,
-              anticipatePin: 1,
-            },
-          });
+    mm.add("(min-width: 1280px)", () => {
+      const getScrollAmount = () =>
+        Math.max(horizontal.scrollWidth - window.innerWidth, 0);
 
-          const onResize = () => ScrollTrigger.refresh();
-          window.addEventListener("resize", onResize);
-          return () => window.removeEventListener("resize", onResize);
+      gsap.to(horizontal, {
+        x: () => -getScrollAmount(),
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          pin: true,
+          scrub: 0.8,
+          start: "top top",
+          end: () => `+=${getScrollAmount()}`,
+          invalidateOnRefresh: true,
+          anticipatePin: 1,
         },
       });
-    }, section);
+    });
 
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
 
   const sectionIntro = (
@@ -265,7 +298,7 @@ const Projects = () => {
         Featured Projects
       </h2>
       <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:mt-4 sm:text-base lg:text-lg">
-        Web apps, Chrome extensions, mobile builds, and production backends with Docker and CI/CD.
+        Full-stack web applications, AI-powered mobile apps, Chrome extensions, and production-grade backends with Docker &amp; CI/CD.
       </p>
     </>
   );
@@ -316,7 +349,7 @@ const Projects = () => {
             <div className="max-w-lg text-center">
               <p className="text-2xl font-bold text-slate-800 xl:text-3xl">More projects coming soon.</p>
               <p className="mt-4 text-base text-slate-600 lg:text-lg">
-                I&apos;m always building — check back or reach out through the contact section.
+                I&apos;m constantly building scalable systems — feel free to explore my GitHub or reach out.
               </p>
             </div>
           </div>

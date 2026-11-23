@@ -1,0 +1,135 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#1e1b4b" />
+      <stop offset="100%" stop-color="#090d16" />
+    </linearGradient>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e" />
+      <stop offset="100%" stop-color="#e11d48" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb7185" />
+      <stop offset="100%" stop-color="#be123c" />
+    </linearGradient>
+    <linearGradient id="screenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#18181b" />
+      <stop offset="100%" stop-color="#09090b" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="15" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="800" height="600" rx="24" fill="url(#bgGrad)" />
+
+  <!-- Background decorative glowing rings & grids -->
+  <circle cx="200" cy="180" r="160" stroke="#f43f5e" stroke-width="1" stroke-opacity="0.15" />
+  <circle cx="200" cy="180" r="220" stroke="#f43f5e" stroke-width="1" stroke-opacity="0.08" stroke-dasharray="8 8" />
+  <circle cx="600" cy="420" r="180" stroke="#fb7185" stroke-width="1" stroke-opacity="0.12" />
+
+  <!-- Mobile Device Outer Shell -->
+  <g transform="translate(255, 60)">
+    <!-- Shadow -->
+    <rect x="-10" y="10" width="290" height="490" rx="42" fill="#000000" opacity="0.45" />
+
+    <!-- Device Frame -->
+    <rect x="0" y="0" width="290" height="480" rx="40" fill="#27272a" stroke="#3f3f46" stroke-width="3" />
+    <rect x="6" y="6" width="278" height="468" rx="36" fill="#09090b" />
+
+    <!-- Notch / Dynamic Island -->
+    <rect x="95" y="16" width="100" height="20" rx="10" fill="#000" />
+    <circle cx="170" cy="26" r="3.5" fill="#1e293b" />
+    <circle cx="120" cy="26" r="2.5" fill="#0ea5e9" opacity="0.6" />
+
+    <!-- Screen Area -->
+    <rect x="14" y="46" width="262" height="412" rx="24" fill="url(#screenGrad)" />
+
+    <!-- App Header -->
+    <text x="28" y="76" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#ffffff" letter-spacing="0.5">Skinify AI</text>
+    <rect x="220" y="65" width="40" height="18" rx="9" fill="#f43f5e" fill-opacity="0.2" />
+    <text x="240" y="78" font-family="system-ui, sans-serif" font-size="9" font-weight="600" fill="#fb7185" text-anchor="middle">v1.0</text>
+
+    <!-- Scan Viewfinder Box -->
+    <g transform="translate(28, 96)">
+      <rect x="0" y="0" width="234" height="190" rx="16" fill="#18181b" stroke="#27272a" stroke-width="1.5" />
+
+      <!-- Corner target reticles -->
+      <path d="M 16 32 L 16 16 L 32 16" stroke="#f43f5e" stroke-width="3" stroke-linecap="round" fill="none" />
+      <path d="M 218 32 L 218 16 L 202 16" stroke="#f43f5e" stroke-width="3" stroke-linecap="round" fill="none" />
+      <path d="M 16 158 L 16 174 L 32 174" stroke="#f43f5e" stroke-width="3" stroke-linecap="round" fill="none" />
+      <path d="M 218 158 L 218 174 L 202 174" stroke="#f43f5e" stroke-width="3" stroke-linecap="round" fill="none" />
+
+      <!-- Center target pulse -->
+      <circle cx="117" cy="95" r="42" stroke="#f43f5e" stroke-width="1.5" stroke-dasharray="4 4" stroke-opacity="0.8" />
+      <circle cx="117" cy="95" r="24" fill="#f43f5e" fill-opacity="0.15" />
+      <circle cx="117" cy="95" r="4" fill="#f43f5e" />
+
+      <!-- Scan laser line -->
+      <line x1="20" y1="95" x2="214" y2="95" stroke="url(#primaryGrad)" stroke-width="2" filter="url(#glow)" />
+
+      <!-- Scan overlay tag -->
+      <rect x="52" y="145" width="130" height="22" rx="11" fill="#000000" fill-opacity="0.75" />
+      <text x="117" y="160" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#fecdd3" text-anchor="middle">Scanning Features (CNN)...</text>
+    </g>
+
+    <!-- AI Diagnostic Result Card -->
+    <g transform="translate(28, 302)">
+      <rect x="0" y="0" width="234" height="106" rx="14" fill="#27272a" fill-opacity="0.7" stroke="#3f3f46" stroke-width="1" />
+      
+      <circle cx="24" cy="24" r="10" fill="#10b981" fill-opacity="0.2" />
+      <path d="M 19 24 L 23 28 L 29 20" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+
+      <text x="42" y="22" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#ffffff">AI Analysis Complete</text>
+      <text x="42" y="34" font-family="system-ui, sans-serif" font-size="9" fill="#a1a1aa">Confidence: 96.8% Match</text>
+
+      <line x1="16" y1="46" x2="218" y2="46" stroke="#3f3f46" stroke-width="1" />
+
+      <!-- Features detected badges -->
+      <rect x="16" y="56" width="94" height="18" rx="9" fill="#f43f5e" fill-opacity="0.15" stroke="#f43f5e" stroke-opacity="0.3" />
+      <text x="63" y="69" font-family="system-ui, sans-serif" font-size="9" font-weight="600" fill="#fb7185" text-anchor="middle">Deep CNN Model</text>
+
+      <rect x="116" y="56" width="102" height="18" rx="9" fill="#3b82f6" fill-opacity="0.15" stroke="#3b82f6" stroke-opacity="0.3" />
+      <text x="167" y="69" font-family="system-ui, sans-serif" font-size="9" font-weight="600" fill="#60a5fa" text-anchor="middle">Image Processing</text>
+
+      <rect x="16" y="80" width="202" height="16" rx="8" fill="#18181b" />
+      <rect x="16" y="80" width="170" height="16" rx="8" fill="url(#primaryGrad)" fill-opacity="0.6" />
+      <text x="117" y="92" font-family="system-ui, sans-serif" font-size="8.5" font-weight="600" fill="#ffffff" text-anchor="middle">Predictive Accuracy: High</text>
+    </g>
+  </g>
+
+  <!-- Left Side Badges / Tech Highlights -->
+  <g transform="translate(60, 150)">
+    <rect x="0" y="0" width="160" height="64" rx="16" fill="#1e1b4b" fill-opacity="0.8" stroke="#4338ca" stroke-width="1.5" />
+    <text x="20" y="28" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#a5b4fc">Mobile Frontend</text>
+    <text x="20" y="46" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#e0e7ff">React Native &amp; Elements</text>
+  </g>
+
+  <g transform="translate(60, 240)">
+    <rect x="0" y="0" width="160" height="64" rx="16" fill="#2e1065" fill-opacity="0.8" stroke="#7e22ce" stroke-width="1.5" />
+    <text x="20" y="28" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#d8b4fe">REST API Server</text>
+    <text x="20" y="46" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#f3e8ff">Node.js + Express</text>
+  </g>
+
+  <g transform="translate(60, 330)">
+    <rect x="0" y="0" width="160" height="64" rx="16" fill="#4c0519" fill-opacity="0.8" stroke="#be123c" stroke-width="1.5" />
+    <text x="20" y="28" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#fda4af">Deep Learning</text>
+    <text x="20" y="46" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#ffe4e6">CNN Disease Detection</text>
+  </g>
+
+  <!-- Right Side Badges / Architecture -->
+  <g transform="translate(580, 180)">
+    <rect x="0" y="0" width="160" height="64" rx="16" fill="#064e3b" fill-opacity="0.8" stroke="#059669" stroke-width="1.5" />
+    <text x="20" y="28" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#6ee7b7">Secure Auth</text>
+    <text x="20" y="46" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#d1fae5">User Profiles &amp; History</text>
+  </g>
+
+  <g transform="translate(580, 270)">
+    <rect x="0" y="0" width="160" height="64" rx="16" fill="#1e293b" fill-opacity="0.8" stroke="#475569" stroke-width="1.5" />
+    <text x="20" y="28" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#94a3b8">Cloud Storage</text>
+    <text x="20" y="46" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#f1f5f9">Image Upload Pipeline</text>
+  </g>
+</svg>
