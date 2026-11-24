@@ -24,15 +24,10 @@ const Home: React.FC = () => {
   });
 
   return (
-    <div className="h-screen bg-black flex flex-col relative w-screen overflow-x-hidden">
+    <div className="min-h-screen md:h-screen bg-black flex flex-col relative w-full overflow-x-hidden">
       <Navbar isTop={isTop} />
       <div
-        style={{
-          width: "100%",
-          maxWidth: "100vw",
-          height: "100vh",
-          position: "absolute",
-        }}
+        className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden"
       >
         <Particles
           particleColors={["#ffffff", "#ffffff"]}
@@ -45,11 +40,13 @@ const Home: React.FC = () => {
           disableRotation={false}
         />
       </div>
-      <div className="grid grid-rows-12 md:grid-cols-12 h-full relative z-10">
-        <div className="row-span-5 md:row-span-12 md:col-span-5 p-4 flex justify-center items-end md:items-center md:h-screen">
+
+      <div className="relative z-10 w-full flex-1 flex flex-col md:grid md:grid-cols-12 items-center justify-center pt-24 pb-12 px-4 sm:px-6 md:pt-0 md:pb-0 md:px-8 max-w-7xl mx-auto gap-8 md:gap-0">
+        {/* Intro text column */}
+        <div className="w-full md:col-span-5 flex justify-center md:justify-start items-center md:h-full">
           <div className="space-y-4 max-w-md text-center md:text-left">
             <div className="flex flex-col md:flex-row items-center md:items-baseline gap-2 w-full justify-center md:justify-start">
-              <p className="text-xl md:text-3xl font-semibold text-secondary uppercase tracking-wider">
+              <p className="text-lg sm:text-xl md:text-3xl font-semibold text-secondary uppercase tracking-wider shrink-0">
                 PASSIONATE
               </p>
               <RotatingText
@@ -58,14 +55,15 @@ const Home: React.FC = () => {
                   "Mobile App Engineer",
                   "MERN & Next.js Specialist",
                 ]}
-                mainClassName="text-slate-300 whitespace-nowrap text-xl md:text-3xl font-semibold overflow-hidden justify-center md:justify-start rounded-lg italic"
+                mainClassName="text-slate-300 text-lg sm:text-xl md:text-3xl font-semibold overflow-hidden justify-center md:justify-start rounded-lg italic"
                 staggerFrom={"random"}
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 splitBy="characters"
                 exit={{ y: "-120%" }}
                 staggerDuration={0.02}
-                splitLevelClassName="overflow-hidden"
+                splitLevelClassName="overflow-hidden py-0.5"
+                elementLevelClassName="px-[0.5px]"
                 transition={{ type: "spring", damping: 30, stiffness: 400 }}
                 rotationInterval={2400}
               />
@@ -76,7 +74,7 @@ const Home: React.FC = () => {
             </p>
 
             {/* Resume & Hire Me Buttons */}
-            <div className="space-x-4 flex justify-center md:justify-start items-center pt-2">
+            <div className="flex flex-wrap gap-4 justify-center md:justify-start items-center pt-2">
               <a
                 href="/resume.pdf"
                 target="_blank"
@@ -87,7 +85,7 @@ const Home: React.FC = () => {
                   text="Resume PDF"
                   disabled={false}
                   speed={3}
-                  className="border border-white/80 hover:border-white rounded-full text-base md:text-lg px-4 py-1.5 font-semibold transition"
+                  className="border border-white/80 hover:border-white rounded-full text-sm sm:text-base md:text-lg px-4 py-1.5 font-semibold transition"
                 />
               </a>
               <div className="z-20">
@@ -101,7 +99,7 @@ const Home: React.FC = () => {
                     text="Hire me!"
                     disabled={false}
                     speed={3}
-                    className="border border-white/80 hover:border-white rounded-full text-base md:text-lg px-4 py-1.5 font-semibold cursor-pointer transition"
+                    className="border border-white/80 hover:border-white rounded-full text-sm sm:text-base md:text-lg px-4 py-1.5 font-semibold cursor-pointer transition"
                   />
                 </Magnet>
               </div>
@@ -151,7 +149,8 @@ const Home: React.FC = () => {
           </div>
         </div>
 
-        <div className="row-span-7 md:row-span-12 md:col-span-7 flex flex-col justify-center items-center space-y-4 md:h-screen">
+        {/* Profile photo and spotlight name column */}
+        <div className="w-full md:col-span-7 flex flex-col justify-center items-center space-y-4 md:h-full">
           <PixelTransition
             firstContent={
               <img
@@ -170,14 +169,7 @@ const Home: React.FC = () => {
                   backgroundColor: "#111",
                 }}
               >
-                <p
-                  style={{
-                    fontWeight: 800,
-                    fontSize: "2.5rem",
-                    color: "#ffffff",
-                  }}
-                  className="text-center leading-none px-4"
-                >
+                <p className="text-center leading-tight font-extrabold text-xl sm:text-2xl md:text-3xl text-white px-4">
                   Welcome to my portfolio
                 </p>
               </div>
@@ -187,7 +179,7 @@ const Home: React.FC = () => {
             animationStepDuration={0.4}
             className="custom-pixel-card"
           />
-          <div>
+          <div className="w-full flex justify-center">
             <MyNameSpotLight />
           </div>
         </div>
